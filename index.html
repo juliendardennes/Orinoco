@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-    <h1>Un super titre</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>accueil - Orinoco</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+        <link rel="shrotcut icon" type="image/png" href="images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+  
+        <script src="https://kit.fontawesome.com/0ac4289e49.js" crossorigin="anonymous" defer></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="logo" href="index.html">
+                    <img src="images/logo-orinoco.png" alt="logo Orinoco">
+                </a>
+                <a class="panier" href="panier.html"><i class="fas fa-shopping-cart"></i>Panier</a>
+            </nav>
+        </header>
+        <main>
+            <template id="products-cards-contenair"></template>
+        </main>
+        <footer>
+            <ul>
+                <li class="contact">Nous contacter</li>
+                <li class="description">A propos</li>
+            </ul>
+        </footer>
+        <script src="index.js"></script>
+    </body>
 </html>
