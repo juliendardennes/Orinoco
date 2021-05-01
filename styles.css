@@ -23,18 +23,9 @@ footer {
   border-radius: 25px;
   background-color: rgb(238, 192, 200);
 }
-footer ul {
-  display: flex;
+.pied-de-page {
+  text-align: center;
+  font-size: 0.8rem;
+  border: 1px solid purple;
   border-radius: 25px;
-  border: 3px solid purple;
-}
-footer li {
-  list-style-type: none;
-  padding: 5% 0;
-}
-footer .contact {
-  margin-left: 15%;
-}
-footer .description {
-  margin-left: 15%;
 }
