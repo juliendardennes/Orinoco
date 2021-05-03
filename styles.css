@@ -19,6 +19,10 @@ header {
   font-size: 1.3em;
   margin-left: 2em;
 }
+.accueil:hover,
+.panier:hover {
+  color: white;
+}
 
 section {
   color: purple;
@@ -27,7 +31,7 @@ section {
   font-size: 2em;
 }
 
-/*ourson à vendre*/
+/*ourson à vendre page d'accueil*/
 
 article {
   margin-top: 1em;
@@ -37,24 +41,128 @@ article a {
   color: black;
 }
 
-.oursons {
+.oursons-accueil {
   background: linear-gradient(pink, rgb(236, 86, 236));
   border-radius: 25px;
+}
+.oursons-accueil li {
+  font-size: 1.3em;
+  list-style: none;
   text-align: center;
 }
-.oursons h3 {
-  font-size: 1.5em;
-}
 
-.oursons img {
+.oursons-accueil img {
   margin: 1em;
   width: 90%;
   border-radius: 25px;
 }
 
-.oursons p {
+/*-------- page produit------*/
+
+.oursons-detail h3 {
   text-align: center;
   font-size: 1.4em;
+}
+.oursons-detail h4 {
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+.oursons-detail h5 {
+  font-size: 1.5em;
+}
+.oursons-detail img {
+  margin: 1em;
+  width: 90%;
+  border-radius: 25px;
+}
+.oursons-detail li {
+  margin-left: 4%;
+  list-style: none;
+  display: inline-block;
+}
+.coloris-beige {
+  width: 4em;
+  height: 2em;
+  background-color: #d2b48c;
+  border: 1px solid grey;
+}
+.coloris-marron {
+  width: 4em;
+  height: 2em;
+  background-color: #d2691e;
+  border: 1px solid grey;
+}
+.coloris-noir {
+  width: 4em;
+  height: 2em;
+  background-color: black;
+  border: 1px solid grey;
+}
+.coloris-blanc {
+  width: 4em;
+  height: 2em;
+  background-color: white;
+  border: 1px solid grey;
+}
+.validation-panier {
+  padding: 1em;
+  margin-left: 20%;
+  margin-bottom: 2em;
+  font-size: 1.4em;
+  font-family: "Original Surfer", sans-serif;
+  text-align: center;
+  color: black;
+  border-radius: 25px;
+  border: 1px solid rgb(236, 86, 236);
+  background: linear-gradient(pink, rgb(236, 86, 236));
+}
+.validation-panier:hover {
+  box-shadow: 10px 10px 5px pink;
+  transform: scale(1.1);
+}
+
+/*------------page du panier -----*/
+
+.votre-panier {
+  background: linear-gradient(pink, rgb(236, 86, 236));
+}
+.validation {
+  padding: 1em;
+  margin-bottom: 2em;
+  font-size: 0.4em;
+  font-family: "Original Surfer", sans-serif;
+  text-align: center;
+  color: black;
+  border-radius: 25px;
+  border: 1px solid rgb(236, 86, 236);
+  background: linear-gradient(pink, rgb(236, 86, 236));
+}
+
+/*--------page de confirmation-------*/
+
+.confirmation {
+  margin-bottom: 2em;
+  background: linear-gradient(pink, rgb(236, 86, 236));
+}
+.confirmation h2 {
+  font-size: 0.5em;
+  color: black;
+}
+.confirmation p {
+  color: black;
+  font-size: 0.7em;
+}
+
+.retour-accueil {
+  padding: 1em;
+  margin: 2em;
+  font-size: 0.4em;
+  font-family: "Original Surfer", sans-serif;
+  text-align: center;
+  color: white;
+  border-radius: 25px;
+  border: 1px solid rgb(236, 86, 236);
+  background: purple;
 }
 
 /*footer*/
@@ -71,6 +179,9 @@ footer {
   margin-left: 2em;
   font-size: 1.4em;
 }
+.social:hover {
+  color: white;
+}
 .pied-de-page {
   text-align: center;
   font-size: 1em;
@@ -80,21 +191,30 @@ footer {
 /*------responsive desktop----------------*/
 
 @media (min-width: 1024px) {
+  /*-------page d'accueil-----*/
   article {
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 3em;
   }
 
-  .oursons {
+  .oursons-accueil {
     margin-left: 2em;
   }
-  .oursons:hover {
+  .oursons-accueil:hover {
     box-shadow: 10px 10px 5px pink;
     transform: scale(1.1);
   }
 
-  .oursons img {
+  .oursons-accueil img {
     width: 80%;
+  }
+  /*--------page produit-----*/
+
+  .oursons-detail img {
+    margin: 1em;
+    width: 50%;
+    height: auto;
+    border-radius: 25px;
   }
 }
