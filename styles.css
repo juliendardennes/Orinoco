@@ -25,36 +25,34 @@ header {
 }
 
 section {
-  color: purple;
+  color: rgb(236, 86, 236);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   text-align: center;
   margin-top: 1em;
   font-size: 2em;
 }
 
-/*ourson à vendre page d'accueil*/
-
-article {
-  margin-top: 1em;
-}
-article a {
-  text-decoration: none;
-  color: black;
-}
-
+/*-------------oursons page d'accueil---------*/
 .oursons-accueil {
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  margin: 5%;
   border-radius: 25px;
+  background: linear-gradient(pink, rgb(236, 86, 236));
 }
 .oursons-accueil li {
-  font-size: 1.3em;
+  position: relative;
+  bottom: 1em;
   list-style: none;
-  text-align: center;
+  margin: 0 15%;
+  color: black;
+  font-size: 1.5em;
 }
-
 .oursons-accueil img {
-  margin: 1em;
-  width: 90%;
   border-radius: 25px;
+  width: 80%;
+  margin: 10%;
+}
+.oursons-accueil a {
+  text-decoration: none;
 }
 
 /*-------- page produit------*/
@@ -192,23 +190,29 @@ footer {
 
 @media (min-width: 1024px) {
   /*-------page d'accueil-----*/
-  article {
+  section {
+    font-size: 2.5em;
+  }
+  #vignettes-oursons {
     display: flex;
-    flex-wrap: nowrap;
     margin-bottom: 3em;
   }
-
   .oursons-accueil {
-    margin-left: 2em;
+    width: 70%;
+    margin: 1em;
   }
   .oursons-accueil:hover {
-    box-shadow: 10px 10px 5px pink;
+    box-shadow: 1px 1px 12px rgb(236, 86, 236);
     transform: scale(1.1);
   }
-
-  .oursons-accueil img {
-    width: 80%;
+  .oursons-accueil li {
+    margin: 2%;
   }
+  .oursons-accueil .price {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+  }
+
   /*--------page produit-----*/
 
   .oursons-detail img {
