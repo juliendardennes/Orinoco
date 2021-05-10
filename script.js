@@ -2,20 +2,21 @@ function getEachTeddy() {
   fetch("http://localhost:3000/api/teddies").then((response) => {
     response.json().then((teddies) => {
       teddies.forEach((teddy) => {
-        displayTeddy(teddy);
+        afficherTeddy(teddy);
       });
     });
   });
 }
 
-function displayTeddy(teddy) {
+//afficher les oursons
+function afficherTeddy(teddy) {
   document.getElementById("vignettes-oursons").innerHTML += `
   <div class="oursons-accueil">
-    <a href="produit.html">
+    <a href="./produit.html?_id=${teddy._id}">
       <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <ul>
-        <li class="name">${teddy.name}</li>
-        <li class="price">${teddy.price / 100}.00 euros</li>
+        <li>${teddy.name}</li>
+        <li>${teddy.price / 100}.00 euros</li>
       </ul>
     </a>
   </div>
@@ -23,24 +24,3 @@ function displayTeddy(teddy) {
 }
 
 getEachTeddy();
-
-/*
-fetch("http://localhost:3000/api/teddies").then((response) => {
-  response.json().then((teddies) => {
-    var html = "";
-    teddies.forEach((teddy) => {
-      html =
-        html +
-        "<img>" +
-        teddy.image +
-        '<li><div class="name">' +
-        teddy.name +
-        '</div><div class="price">' +
-        teddy.price +
-        "</div></li>";
-    });
-    document.getElementById("vignettes-oursons").innerHTML = html;
-  });
-});
-
-*/

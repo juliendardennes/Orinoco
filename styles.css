@@ -36,6 +36,7 @@ section {
 .oursons-accueil {
   margin: 5%;
   border-radius: 25px;
+  box-shadow: 1px 1px 12px rgb(236, 86, 236);
   background: linear-gradient(pink, rgb(236, 86, 236));
 }
 .oursons-accueil li {
@@ -57,51 +58,28 @@ section {
 
 /*-------- page produit------*/
 
-.oursons-detail h3 {
+#oursons-product h3 {
   text-align: center;
   font-size: 1.4em;
 }
-.oursons-detail h4 {
+#oursons-product h4 {
   font-size: 1.2em;
   text-decoration: underline;
 }
-.oursons-detail h5 {
+#oursons-product h5 {
   font-size: 1.5em;
 }
-.oursons-detail img {
+#oursons-product img {
   margin: 1em;
   width: 90%;
   border-radius: 25px;
 }
-.oursons-detail li {
+#oursons-product li {
   margin-left: 4%;
   list-style: none;
   display: inline-block;
 }
-.coloris-beige {
-  width: 4em;
-  height: 2em;
-  background-color: #d2b48c;
-  border: 1px solid grey;
-}
-.coloris-marron {
-  width: 4em;
-  height: 2em;
-  background-color: #d2691e;
-  border: 1px solid grey;
-}
-.coloris-noir {
-  width: 4em;
-  height: 2em;
-  background-color: black;
-  border: 1px solid grey;
-}
-.coloris-blanc {
-  width: 4em;
-  height: 2em;
-  background-color: white;
-  border: 1px solid grey;
-}
+
 .validation-panier {
   padding: 1em;
   margin-left: 20%;
@@ -188,7 +166,7 @@ footer {
 /*----------------------------------*/
 /*------responsive desktop----------------*/
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   /*-------page d'accueil-----*/
   section {
     font-size: 2.5em;
@@ -198,7 +176,6 @@ footer {
     margin-bottom: 3em;
   }
   .oursons-accueil {
-    width: 70%;
     margin: 1em;
   }
   .oursons-accueil:hover {
@@ -207,15 +184,12 @@ footer {
   }
   .oursons-accueil li {
     margin: 2%;
-  }
-  .oursons-accueil .price {
-    font-size: 1.2em;
-    margin-top: 0.5em;
+    font-size: 1em;
   }
 
   /*--------page produit-----*/
 
-  .oursons-detail img {
+  .oursons-product img {
     margin: 1em;
     width: 50%;
     height: auto;
