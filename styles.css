@@ -12,15 +12,15 @@ header {
 .logo img {
   width: 60%;
 }
-.accueil,
-.panier {
+.home,
+.cart {
   color: black;
   text-decoration: none;
   font-size: 1.3em;
   margin-left: 2em;
 }
-.accueil:hover,
-.panier:hover {
+.home:hover,
+.cart:hover {
   color: white;
 }
 
@@ -33,54 +33,54 @@ section {
 }
 
 /*-------------oursons page d'accueil---------*/
-.oursons-accueil {
+.teddy-home {
   margin: 5%;
   border-radius: 25px;
   box-shadow: 1px 1px 12px rgb(236, 86, 236);
   background: linear-gradient(pink, rgb(236, 86, 236));
 }
-.oursons-accueil li {
+.teddy-home li {
   position: relative;
   bottom: 1em;
   list-style: none;
   margin: 0 15%;
   color: black;
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
-.oursons-accueil img {
+.teddy-home img {
   border-radius: 25px;
   width: 80%;
   margin: 10%;
 }
-.oursons-accueil a {
+.teddy-home a {
   text-decoration: none;
 }
 
 /*-------- page produit------*/
 
-#oursons-product h3 {
+#teddy-product h3 {
   text-align: center;
   font-size: 1.4em;
 }
-#oursons-product h4 {
+#teddy-product h4 {
   font-size: 1.2em;
   text-decoration: underline;
 }
-#oursons-product h5 {
+#teddy-product h5 {
   font-size: 1.5em;
 }
-#oursons-product img {
+#teddy-product img {
   margin: 1em;
   width: 90%;
   border-radius: 25px;
 }
-#oursons-product li {
+#teddy-product li {
   margin-left: 4%;
   list-style: none;
   display: inline-block;
 }
 
-.validation-panier {
+.validation-cart {
   padding: 1em;
   margin-left: 20%;
   margin-bottom: 2em;
@@ -92,14 +92,14 @@ section {
   border: 1px solid rgb(236, 86, 236);
   background: linear-gradient(pink, rgb(236, 86, 236));
 }
-.validation-panier:hover {
+.validation-cart:hover {
   box-shadow: 10px 10px 5px pink;
   transform: scale(1.1);
 }
 
 /*------------page du panier -----*/
 
-.votre-panier {
+.my-cart {
   background: linear-gradient(pink, rgb(236, 86, 236));
 }
 .validation {
@@ -129,7 +129,7 @@ section {
   font-size: 0.7em;
 }
 
-.retour-accueil {
+.return-home {
   padding: 1em;
   margin: 2em;
   font-size: 0.4em;
@@ -146,16 +146,16 @@ section {
 footer {
   background: linear-gradient(pink, rgb(236, 86, 236));
 }
-.reseaux-sociaux {
+.social-networks {
   padding-top: 1.5em;
   text-align: center;
 }
-.social {
+.networks {
   color: black;
   margin-left: 2em;
   font-size: 1.4em;
 }
-.social:hover {
+.networks:hover {
   color: white;
 }
 .pied-de-page {
@@ -171,27 +171,27 @@ footer {
   section {
     font-size: 2.5em;
   }
-  #vignettes-oursons {
+  #thumbnails-teddies {
     display: flex;
     margin-bottom: 3em;
   }
-  .oursons-accueil {
+  .teddy-home {
     margin: 1em;
   }
-  .oursons-accueil:hover {
+  .teddy-home:hover {
     box-shadow: 1px 1px 12px rgb(236, 86, 236);
     transform: scale(1.1);
   }
-  .oursons-accueil li {
+  .teddy-home li {
     margin: 2%;
     font-size: 1em;
   }
 
   /*--------page produit-----*/
 
-  .oursons-product img {
+  #teddy-product img {
     margin: 1em;
-    width: 50%;
+    width: 30%;
     height: auto;
     border-radius: 25px;
   }
