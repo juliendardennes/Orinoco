@@ -22,5 +22,4 @@ function displayTeddy(teddy) {
   </div>
   `;
 }
-
 getEachTeddy();

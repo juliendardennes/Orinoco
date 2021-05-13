@@ -6,22 +6,28 @@ function getTeddy() {
     response.json().then((teddy) => {
       displayTeddy(teddy);
     });
-    console.log(teddyId);
   });
+}
+
+function getColor(colors) {
+  let options = "";
+  for (let i = 0, size = colors.length; i < size; i++) {
+    options += `<option>${colors[i]}</option>`;
+  }
+  return options;
 }
 
 function displayTeddy(teddy) {
   document.getElementById("teddy-product").innerHTML = `
   <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
     <div class="description">
-        <h3>${teddy.name}</h3>
-        <p>${teddy.description}</p>
-        <h4>Choisissez la couleur:</h4>
-        <ul>
-            <li>${teddy.colors}</li>
-        </ul>
+      <h3>${teddy.name}</h3>
+      <p>${teddy.description}</p>
     </div>
-    <h5>${teddy.price / 100}.00 euros</h5>
+    <select id="teddy-colors">
+      ${getColor(teddy.colors)}
+    </select>
+    <h5>${teddy.price / 100}€</h5>
     <a href="panier.html"><input class="validation-cart" type="button" value="Ajouter au panier"></a>
   `;
 }
