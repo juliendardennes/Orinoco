@@ -5,7 +5,7 @@ body {
 /*header*/
 
 header {
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
   text-align: center;
   padding-bottom: 1.2em;
 }
@@ -37,7 +37,7 @@ section {
   margin: 5%;
   border-radius: 25px;
   box-shadow: 1px 1px 12px rgb(236, 86, 236);
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .teddy-home li {
   position: relative;
@@ -73,6 +73,9 @@ section {
   width: 90%;
   border-radius: 25px;
 }
+select {
+  font-size: 1.2em;
+}
 .validation-cart {
   padding: 1em;
   margin-left: 20%;
@@ -83,7 +86,7 @@ section {
   color: black;
   border-radius: 25px;
   border: 1px solid rgb(236, 86, 236);
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .validation-cart:hover {
   box-shadow: 10px 10px 5px pink;
@@ -93,7 +96,7 @@ section {
 /*------------page du panier -----*/
 
 .my-cart {
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .validation {
   padding: 1em;
@@ -104,14 +107,14 @@ section {
   color: black;
   border-radius: 25px;
   border: 1px solid rgb(236, 86, 236);
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 
 /*--------page de confirmation-------*/
 
 .confirmation {
   margin-bottom: 2em;
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .confirmation h2 {
   font-size: 0.5em;
@@ -130,14 +133,14 @@ section {
   text-align: center;
   color: white;
   border-radius: 25px;
-  border: 1px solid rgb(236, 86, 236);
+  border: 1px solid rgb(247, 200, 247);
   background: purple;
 }
 
 /*footer*/
 
 footer {
-  background: linear-gradient(pink, rgb(236, 86, 236));
+  background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .social-networks {
   padding-top: 1.5em;
