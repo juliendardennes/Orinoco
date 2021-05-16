@@ -1,14 +1,12 @@
 //appel de l'api avec la methode fetch
-function getEachTeddy() {
-  fetch("http://localhost:3000/api/teddies").then((response) => {
-    //transformer la reponse en json
-    response.json().then((teddies) => {
-      teddies.forEach((teddy) => {
-        displayTeddy(teddy);
-      });
+fetch("http://localhost:3000/api/teddies").then((response) => {
+  //transformer la reponse en json
+  response.json().then((teddies) => {
+    teddies.forEach((teddy) => {
+      displayTeddy(teddy);
     });
   });
-}
+});
 
 //afficher les oursons dans le html
 function displayTeddy(teddy) {
@@ -20,8 +18,8 @@ function displayTeddy(teddy) {
         <li>${teddy.name}</li>
         <li>${teddy.price / 100} €</li>
       </ul>
+      <h4>en savoir plus</h4>
     </a>
   </div>
   `;
 }
-getEachTeddy();
