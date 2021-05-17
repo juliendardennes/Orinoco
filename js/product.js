@@ -1,11 +1,15 @@
 let searchParams = new URL(document.location).searchParams;
 let teddyId = searchParams.get("_id"); //obtenir l'ID du produit
+_teddy = {}; //definir une variable global _teddy qui recevera le teddy
+let newPriceQuantity;
 
 //appel de l'aAPI
 fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID de notre produit
   .then((response) => {
     //recupère le tableau Json
     response.json().then((teddy) => {
+      // assigné ce teddy a la variable global
+      _teddy = teddy;
       displayTeddy(teddy);
       addToPrice(teddy);
     });
@@ -13,16 +17,17 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
 
 // changer le prix en fonction de la quantité
 function addToPrice(teddy) {
-  let teddyPrice = teddy.price;
-  console.log(teddyPrice);
-  // let newProductQuantitySelect = document.getElementById("quantity");
-  // let productQuantity =
-  //   newProductQuantitySelect.options[newProductQuantitySelect.selectedIndex]
-  //     .value;
-  // console.log(productQuantity);
+  let teddyPrice = _teddy.price;
+  let newProductQuantitySelect = document.getElementById("quantity");
+  let productQuantity =
+    newProductQuantitySelect.options[newProductQuantitySelect.selectedIndex]
+      .value;
+  let newPriceQuantity = teddyPrice * productQuantity;
+  document.getElementById("price").innerHTML =
+    (_teddy.price * productQuantity) / 100 + ",00€";
 }
 
-//boucle pour récupérer les couleurs de chaque objets
+//boucle pour récupérer les couleurs de chaque objet
 function getColor(colors) {
   let options = "";
   for (let i = 0, size = colors.length; i < size; i++) {
@@ -42,12 +47,13 @@ function displayTeddy(teddy) {
     <form>
       <label for="teddy-colors"> Choisissez la couleur : </label>
         <select name="teddy-colors" id="teddy-colors">
-          <option value="color">${getColor(teddy.colors)}</option>
+          <option value="color">${getColor(teddy.colors)}
+          </option>
         </select>
     </form>
     <label class="teddy-quantity-selector" for="teddy-quantity">Quantité:
-      <select id="quantity" form="quantity" onclick="addToPrice()" name="teddy-quantity">
-          <option value="0">0</option>
+    </label>
+      <select id="quantity" form="quantity" onchange="addToPrice()" name="teddy-quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -58,8 +64,8 @@ function displayTeddy(teddy) {
           <option value="8">8</option>
           <option value="9">9</option>
       </select>
-    </label>
-    <p id="teddy-price"></p>
+    <p id="price"></p>
     <button id="validation-cart" type="submit" name="validation">Ajouter au panier</button>
     `;
 }
+// fonction pour le localStorage
