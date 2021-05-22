@@ -12,10 +12,30 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
       _teddy = teddy;
       displayTeddy(teddy);
       addToPrice(teddy);
+      //-------------------
+      // -----localstorage------
+      //----------------------
+
+      var validCart = document.querySelector("#validationCart");
+      validCart.addEventListener("click", addToCart);
+      function addToCart() {
+        var cartStorage = JSON.parse(localStorage.getItem("produit"));
+        // si il y a deja des produits enregistres dans le local storage
+        if (cartStorage) {
+          cartStorage.push(teddy);
+          localStorage.setItem("produit", JSON.stringify(cartStorage));
+        }
+        // si il n'y a pas de produit enregistres dans le local storage
+        else {
+          cartStorage = [];
+          cartStorage.push(teddy);
+          localStorage.setItem("produit", JSON.stringify(cartStorage));
+        }
+      }
     });
   });
 
-// changer le prix en fonction de la quantité
+// // changer le prix en fonction de la quantité
 function addToPrice(teddy) {
   let teddyPrice = _teddy.price;
   let newProductQuantitySelect = document.getElementById("quantity");
@@ -65,7 +85,6 @@ function displayTeddy(teddy) {
           <option value="9">9</option>
       </select>
     <p id="price"></p>
-    <button id="validation-cart" type="submit" name="validation">Ajouter au panier</button>
+    <button id="validationCart" type="button" >Ajouter au panier</button>
     `;
 }
-// fonction pour le localStorage

@@ -12,11 +12,13 @@ header {
 .logo img {
   width: 60%;
 }
-.home,
-.cart {
+#cart {
+  list-style-type: none;
+}
+.home {
   color: black;
   text-decoration: none;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-left: 2em;
 }
 .home:hover,
@@ -81,7 +83,7 @@ section {
 select {
   font-size: 1.2em;
 }
-#validation-cart {
+#validationCart {
   padding: 1em;
   margin-left: 20%;
   margin-bottom: 2em;
@@ -93,7 +95,7 @@ select {
   border: 1px solid rgb(247, 200, 247);
   background: linear-gradient(pink, rgb(247, 200, 247));
 }
-#validation-cart:hover {
+#validationCart:hover {
   box-shadow: 10px 10px 5px pink;
   transform: scale(1.1);
 }

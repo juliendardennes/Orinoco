@@ -16,7 +16,7 @@ function displayTeddy(teddy) {
       <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <ul>
         <li>${teddy.name}</li>
-        <li>${teddy.price / 100} €</li>
+        <li>${teddy.price / 100} ,00€</li>
       </ul>
       <h4>en savoir plus</h4>
     </a>
