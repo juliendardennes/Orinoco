@@ -1,6 +1,10 @@
 body {
   font-family: "Original Surfer", sans-serif;
 }
+body a {
+  text-decoration: none;
+  color: black;
+}
 
 /*header*/
 
@@ -17,7 +21,6 @@ header {
 }
 .home {
   color: black;
-  text-decoration: none;
   font-size: 1.5em;
   margin-left: 2em;
 }
@@ -27,11 +30,9 @@ header {
 }
 
 section {
-  color: rgb(236, 86, 236);
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  text-align: center;
   margin-top: 1em;
   font-size: 2em;
+  text-align: center;
 }
 
 /*-------------oursons page d'accueil---------*/
@@ -58,9 +59,6 @@ section {
   color: grey;
   margin-left: 10%;
   padding-bottom: 10%;
-}
-.teddy-home a {
-  text-decoration: none;
 }
 
 /*-------- page produit------*/
@@ -101,10 +99,28 @@ select {
 }
 
 /*------------page du panier -----*/
-
-.my-cart {
-  background: linear-gradient(pink, rgb(247, 200, 247));
+.thumbnail-cart {
+  background-color: rgb(247, 200, 247);
+  border-radius: 25px;
 }
+.thumbnail-cart img {
+  margin-top: 1em;
+  margin-left: 5%;
+  width: 90%;
+  border-radius: 25px;
+}
+.thumbnail-cart h3 {
+  color: black;
+  font-weight: lighter;
+  margin-left: 0.5em;
+}
+.thumbnail-cart p {
+  color: black;
+  font-weight: lighter;
+  font-size: 0.8em;
+  margin-left: 1em;
+}
+
 #validation {
   padding: 1em;
   margin-bottom: 2em;

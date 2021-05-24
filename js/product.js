@@ -1,7 +1,6 @@
 let searchParams = new URL(document.location).searchParams;
 let teddyId = searchParams.get("_id"); //obtenir l'ID du produit
 _teddy = {}; //definir une variable global _teddy qui recevera le teddy
-let newPriceQuantity;
 
 //appel de l'aAPI
 fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID de notre produit
@@ -12,28 +11,44 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
       _teddy = teddy;
       displayTeddy(teddy);
       addToPrice(teddy);
+
       //-------------------
       // -----localstorage------
       //----------------------
-
       var validCart = document.querySelector("#validationCart");
       validCart.addEventListener("click", addToCart);
       function addToCart() {
-        var cartStorage = JSON.parse(localStorage.getItem("produit"));
-        // si il y a deja des produits enregistres dans le local storage
+        let cartStorage = JSON.parse(localStorage.getItem("teddy"));
         if (cartStorage) {
-          cartStorage.push(teddy);
-          localStorage.setItem("produit", JSON.stringify(cartStorage));
-        }
-        // si il n'y a pas de produit enregistres dans le local storage
-        else {
+          cartStorage.push({
+            imageUrl: teddy.imageUrl,
+            name: teddy.name,
+            price: teddy.price,
+            _id: teddy._id,
+          });
+          localStorage.setItem(`teddy`, JSON.stringify(cartStorage));
+        } else {
           cartStorage = [];
-          cartStorage.push(teddy);
-          localStorage.setItem("produit", JSON.stringify(cartStorage));
+          cartStorage.push({
+            imageUrl: teddy.imageUrl,
+            name: teddy.name,
+            price: teddy.price,
+            _id: teddy._id,
+          });
+          localStorage.setItem(`teddy`, JSON.stringify(cartStorage));
         }
       }
     });
   });
+
+//boucle pour récupérer les couleurs de chaque objet
+function getColor(colors) {
+  let options = "";
+  for (let i = 0, size = colors.length; i < size; i++) {
+    options += `<option>${colors[i]}</option>`; //incrémente les couleurs à notre liste d'option
+  }
+  return options;
+}
 
 // // changer le prix en fonction de la quantité
 function addToPrice(teddy) {
@@ -45,15 +60,6 @@ function addToPrice(teddy) {
   let newPriceQuantity = teddyPrice * productQuantity;
   document.getElementById("price").innerHTML =
     (_teddy.price * productQuantity) / 100 + ",00€";
-}
-
-//boucle pour récupérer les couleurs de chaque objet
-function getColor(colors) {
-  let options = "";
-  for (let i = 0, size = colors.length; i < size; i++) {
-    options += `<option>${colors[i]}</option>`; //incrémente les couleurs à notre liste d'option
-  }
-  return options;
 }
 
 function displayTeddy(teddy) {
@@ -85,6 +91,6 @@ function displayTeddy(teddy) {
           <option value="9">9</option>
       </select>
     <p id="price"></p>
-    <button id="validationCart" type="button" >Ajouter au panier</button>
+    <button id="validationCart" type="button"><a href="cart.html">Ajouter au panier</a></button>
     `;
 }
