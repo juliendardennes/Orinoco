@@ -44,7 +44,6 @@ section {
 }
 .teddy-home li {
   position: relative;
-  bottom: 1em;
   list-style: none;
   margin: 0 15%;
   color: black;
@@ -93,46 +92,62 @@ select {
   border: 1px solid rgb(247, 200, 247);
   background: linear-gradient(pink, rgb(247, 200, 247));
 }
-#validationCart:hover {
-  box-shadow: 10px 10px 5px pink;
-  transform: scale(1.1);
-}
 
 /*------------page du panier -----*/
-.thumbnail-cart {
-  background-color: rgb(247, 200, 247);
-  border-radius: 25px;
+section h2 {
+  font-size: 1.2em;
+  text-decoration: underline;
 }
-.thumbnail-cart img {
-  margin-top: 1em;
-  margin-left: 5%;
-  width: 90%;
-  border-radius: 25px;
+.empty-cart p {
+  font-size: 0.7em;
 }
-.thumbnail-cart h3 {
-  color: black;
-  font-weight: lighter;
-  margin-left: 0.5em;
-}
-.thumbnail-cart p {
-  color: black;
-  font-weight: lighter;
-  font-size: 0.8em;
-  margin-left: 1em;
-}
-
-#validation {
+.empty-cart a {
   padding: 1em;
   margin-bottom: 2em;
-  font-size: 0.4em;
-  font-family: "Original Surfer", sans-serif;
-  text-align: center;
+  font-size: 0.5em;
   color: black;
   border-radius: 25px;
-  border: 1px solid rgb(236, 86, 236);
   background: linear-gradient(pink, rgb(247, 200, 247));
 }
-
+.picture-cart {
+  border-radius: 20px;
+  background-color: white;
+  margin: 10px;
+  display: flex;
+}
+.thumbnail-cart img {
+  width: 40%;
+  object-fit: cover;
+  border-radius: 20px 0 0 20px;
+}
+.description-cart label {
+  font-size: 0.6em;
+}
+#quantity {
+  font-size: 0.7em;
+}
+.description-cart h3 {
+  font-size: 1em;
+  margin: 2em;
+}
+.description-cart p {
+  font-size: 0.7em;
+}
+.contact-information {
+  text-align: center;
+  background: linear-gradient(pink, rgb(247, 200, 247));
+  border-radius: 25px;
+}
+.button-confirm {
+  margin-left: 20%;
+  text-decoration: underline;
+  width: 50%;
+  padding: 1em;
+  font-size: 1.5em;
+  text-align: center;
+  background: linear-gradient(pink, rgb(247, 200, 247));
+  border-radius: 25px;
+}
 /*--------page de confirmation-------*/
 
 .confirmation {
@@ -163,6 +178,7 @@ select {
 /*footer*/
 
 footer {
+  margin-top: 2em;
   background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .social-networks {
@@ -181,37 +197,26 @@ footer {
   text-align: center;
   font-size: 1em;
 }
+/*--------------------responsive-----------------*/
 
-/*----------------------------------*/
-/*------responsive desktop----------------*/
-
-@media (min-width: 900px) {
-  /*-------page d'accueil-----*/
-  section {
-    font-size: 2.5em;
+@media (min-width: 750px) {
+  .logo img {
+    width: 20%;
+  }
+  .teddy-home {
+    width: 40%;
+    margin: 1%;
+  }
+  .teddy-home img {
+    width: 90%;
   }
   #thumbnails-teddies {
     display: flex;
-    margin-bottom: 3em;
-  }
-  .teddy-home {
-    margin: 1em;
-  }
-  .teddy-home:hover {
-    box-shadow: 1px 1px 12px rgb(236, 86, 236);
-    transform: scale(1.1);
   }
   .teddy-home li {
-    margin: 2%;
     font-size: 1em;
   }
-
-  /*--------page produit-----*/
-
   #teddy-product img {
-    margin: 1em;
-    width: 30%;
-    height: auto;
-    border-radius: 25px;
+    width: 60%;
   }
 }

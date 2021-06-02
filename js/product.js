@@ -10,7 +10,6 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
       // assigné ce teddy a la variable global
       _teddy = teddy;
       displayTeddy(teddy);
-      addToPrice(teddy);
 
       //-------------------
       // -----localstorage------
@@ -19,22 +18,11 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
       validCart.addEventListener("click", addToCart);
       function addToCart() {
         let cartStorage = JSON.parse(localStorage.getItem("teddy"));
-        if (cartStorage) {
-          cartStorage.push({
-            imageUrl: teddy.imageUrl,
-            name: teddy.name,
-            price: teddy.price,
-            _id: teddy._id,
-          });
-          localStorage.setItem(`teddy`, JSON.stringify(cartStorage));
-        } else {
+        if (null == cartStorage) {
           cartStorage = [];
-          cartStorage.push({
-            imageUrl: teddy.imageUrl,
-            name: teddy.name,
-            price: teddy.price,
-            _id: teddy._id,
-          });
+        }
+        if (!cartStorage.includes(teddy._id)) {
+          cartStorage.push(teddy._id);
           localStorage.setItem(`teddy`, JSON.stringify(cartStorage));
         }
       }
@@ -48,18 +36,6 @@ function getColor(colors) {
     options += `<option>${colors[i]}</option>`; //incrémente les couleurs à notre liste d'option
   }
   return options;
-}
-
-// // changer le prix en fonction de la quantité
-function addToPrice(teddy) {
-  let teddyPrice = _teddy.price;
-  let newProductQuantitySelect = document.getElementById("quantity");
-  let productQuantity =
-    newProductQuantitySelect.options[newProductQuantitySelect.selectedIndex]
-      .value;
-  let newPriceQuantity = teddyPrice * productQuantity;
-  document.getElementById("price").innerHTML =
-    (_teddy.price * productQuantity) / 100 + ",00€";
 }
 
 function displayTeddy(teddy) {
@@ -77,20 +53,7 @@ function displayTeddy(teddy) {
           </option>
         </select>
     </form>
-    <label class="teddy-quantity-selector" for="teddy-quantity">Quantité:
-    </label>
-      <select id="quantity" form="quantity" onchange="addToPrice()" name="teddy-quantity">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-      </select>
-    <p id="price"></p>
+    <p>${teddy.price / 100},00€</p>
     <button id="validationCart" type="button"><a href="cart.html">Ajouter au panier</a></button>
     `;
 }

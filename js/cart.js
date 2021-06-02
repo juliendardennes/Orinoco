@@ -1,35 +1,33 @@
 // declaration de la variable
-let cartStorage = JSON.parse(localStorage.getItem("teddy"));
+let cartStorage = localStorage.getItem("teddy");
+if (cartStorage == null) {
+  cartStorage = [];
+} else {
+  cartStorage = JSON.parse(cartStorage);
+}
+
 // selection de l'id où je vais injecter le code html
 const displayCart = document.querySelector("#myCart");
+var productCart = "";
+const promises = cartStorage.map((id) => {
+  return fetch("http://localhost:3000/api/teddies/" + id).then((response) => {
+    return response.json();
+  });
+});
 
-let productCart = [];
-// si le panier est vide, afficher le panier est vide
-if (cartStorage === null) {
-  let emptyCart = `
-    <div class="empty-cart">
-        <p>Le panier est vide</p>
-    </div>
-  `;
-  displayCart.innerHTML = emptyCart;
-  // sinon, si le panier n'est pas vide, il faut afficher les produits dans le localstorage
-} else {
-  for (i = 0; i < cartStorage.length; i++) {
+Promise.all(promises).then((data) => {
+  data.forEach((teddy) => {
     productCart =
       productCart +
       `
     <div class="thumbnail-cart">
-      <img alt="teddy ${cartStorage[i].name}" src="${cartStorage[i].imageUrl}">
+      <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <div class="descriptionCart">
-        <h3>${cartStorage[i].name}</h3>
-        <p class="colors">${cartStorage[i].colors}</p>
-        <p class="price">${cartStorage[i].price / 100}.00 € </p>
+        <h3>${teddy.name}</h3>
+        <p class="price">${teddy.price / 100}.00 € </p>
       </div>
     </div>
     `;
-  }
-  if (i === cartStorage.length) {
-    // injection html dans la page panier
     displayCart.innerHTML = productCart;
-  }
-}
+  });
+});
