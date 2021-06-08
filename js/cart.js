@@ -24,6 +24,9 @@ Promise.all(promises).then((data) => {
       <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <div class="descriptionCart">
         <h3>${teddy.name}</h3>
+        <label class="selectProduct" for="quantiteProduit"> Choisir la quantité </label>
+        <select name="option-produit" id="productQuantity">
+        </select>
         <p id="price">${teddy.price / 100}.00 € </p>
       </div>
     </div>
@@ -31,61 +34,71 @@ Promise.all(promises).then((data) => {
     displayCart.innerHTML = productCart;
   });
 });
+// --------selection quantite -----------
+const structureQuantite = `
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">13</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+`;
 
 // -----------------formulaire---------------
 
-const afficherFormulaireHtml = () => {
+const displayFormHtml = () => {
   // selection du dom pour le positionnement du formulaire
-  const positionFormulaire = document.querySelector("#formulaire");
-  const structureFormulaire = `
+  const positionForm = document.querySelector("#myForm");
+  const structureForm = `
   <p class="contact-information">Vos coordonnées</p>
   <form>
 
-    <label for="nom"> Nom: </label><span id="nomManquant class="champ-manquant"></span>
-    <input type="text" name="nom" id="name" required/>
+    <label for="nom"> Nom: </label><span id="nomManquant" class="champ-manquant"></span>
+    <input type="text" name="nom" id="name"/>
 
     <label for="prenom"> Prénom: </label><span id="prenomManquant" class="champ-manquant"></span>
-    <input type="text" name="prenom" id="firstname" required/>
+    <input type="text" name="prenom" id="firstname"/>
 
-    <label for="adresse"> Adresse: </label><span id="adressManquant" class="champ-manquant"></span>
-    <input type="text" name="adresse" id="adress" required/>
+    <label for="adresse"> Adresse: </label><span id="adresseManquant" class="champ-manquant"></span>
+    <input type="text" name="adresse" id="adress"/>
 
-    <label for="code-postal"> Code postal: </label><span id="codepostalManquant" class="champ-manquant"></span>
-    <input type="text" name="code-postal" id="code-postal" required"/>
+    <label for="code-postal"> Code postal: </label><span id="codePostalManquant" class="champ-manquant"></span>
+    <input type="text" name="code-postal" id="codepostal"/>
     
     <label for="town"> Ville: </label><span id="townManquant" class="champ-manquant"></span>
-    <input type="text" name="ville" id="town" required/>
+    <input type="text" name="ville" id="town" />
     
     <label for="email"> Email: </label><span id="emailManquant" class="champ-manquant"></span>
-    <input type="text" name="mail" id="email" required/>
+    <input type="text" name="mail" id="email" />
 
   </form>
   <p id="button-confirm">Valider votre panier</p>
   `;
   // injection html
-  positionFormulaire.innerHTML = structureFormulaire;
+  positionForm.innerHTML = structureForm;
 };
 // affichage du formulaire
-afficherFormulaireHtml();
+displayFormHtml();
 
 // selection du bouton envoyer
-const btnEnvoyerFormulaire = document.querySelector("#button-confirm");
+const btnSentForm = document.querySelector("#button-confirm");
 
-btnEnvoyerFormulaire.addEventListener("click", () => {
+btnSentForm.addEventListener("click", () => {
   // recuperation des valeurs du formulaire
-  const formulaireValues = {
+  const formValues = {
     nom: document.querySelector("#name").value,
     prenom: document.querySelector("#firstname").value,
     adresse: document.querySelector("#adress").value,
-    codePostal: document.querySelector("#code-postal").value,
+    codePostal: document.querySelector("#codepostal").value,
     ville: document.querySelector("#town").value,
     mail: document.querySelector("#email").value,
   };
 
   //------------------ validation du formulaire---------
-  const textAlert = (value) => {
-    return `${value} : chiffre et symbole ne sont pas autorisés \n Ne pas dépasser 20 caractères, minimum 3 caractères`;
-  };
+
   const regExNomPrenomVille = (value) => {
     return /^[A-Za-z\s]{3,20}$/.test(value);
   };
@@ -98,103 +111,108 @@ btnEnvoyerFormulaire.addEventListener("click", () => {
   const regExAdress = (value) => {
     return /^[A-Za-z0-9\s]{5,50}$/.test(value);
   };
-  // fonction pour indiquer une erreur dans le formulaire
-  function dataErreurFormulaire(querySelectorId) {
-    console.log(dataErreurFormulaire);
-    document.querySelector(`#${querySelectorId}`).textContent = "";
-  }
-  function messageErreur(querySelectorId) {
-    console.log(messageErreur);
-    document.querySelector(`#${querySelectorId}`).textContent =
-      "Veuillez bien remplir ce champ";
-  }
 
-  // controle de la validité du nom
-  function nomControle() {
-    const leNom = formulaireValues.nom;
+  // ------controle de la validité du nom
+  function nameControl() {
+    const leNom = formValues.nom;
     if (regExNomPrenomVille(leNom)) {
-      dataErreurFormulaire("nomManquant");
+      document.querySelector("#nomManquant").textContent = "";
       return true;
     } else {
-      messageErreur("nomManquant");
+      document.querySelector("#nomManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
-  // controle de la validite du prenom
-  function prenomControle() {
-    const lePrenom = formulaireValues.prenom;
+  // ---------controle de la validite du prenom
+  function firstNameControl() {
+    const lePrenom = formValues.prenom;
     if (regExNomPrenomVille(lePrenom)) {
-      dataErreurFormulaire("prenomManquant");
+      document.querySelector("#prenomManquant").textContent = "";
       return true;
     } else {
-      messageErreur("prenomManquant");
+      document.querySelector("#prenomManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   // controle de la validite de la ville
-  function townControle() {
-    const laVille = formulaireValues.ville;
+  function townControl() {
+    const laVille = formValues.ville;
     if (regExNomPrenomVille(laVille)) {
-      dataErreurFormulaire("townManquant");
+      document.querySelector("#townManquant").textContent = "";
       return true;
     } else {
-      messageErreur("townManquant");
+      document.querySelector("#townManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   // controle de la validité du code postal
-  function codePostalControle() {
-    const leCodePostal = formulaireValues.codePostal;
-    console.log(leCodePostal);
+  function postalCodeControl() {
+    const leCodePostal = formValues.codePostal;
     if (regExCodePostal(leCodePostal)) {
-      dataErreurFormulaire("codePostalManquant");
+      document.querySelector("#codePostalManquant").textContent = "";
       return true;
     } else {
-      messageErreur("codepostalManquant");
+      document.querySelector("#codePostalManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   // controle de la validité de l'email
   function emailControle() {
-    const email = formulaireValues.mail;
+    const email = formValues.mail;
     if (regExEmail(email)) {
-      dataErreurFormulaire("emailManquant");
+      document.querySelector("#emailManquant").textContent = "";
       return true;
     } else {
-      messageErreur("emailManquant");
+      document.querySelector("#emailManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   // controle de la validité de l'adresse
   function adressControle() {
-    const adress = formulaireValues.adress;
+    const adress = formValues.adress;
     if (regExAdress(adress)) {
-      dataErreurFormulaire("adressManquant");
+      document.querySelector("#adresseManquant").textContent = "";
       return true;
     } else {
-      messageErreur("adressManquant");
+      document.querySelector("#adresseManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   // controle validité formulaire avant envoie dans le localstorage
   if (
-    nomControle() &&
-    prenomControle() &&
+    nameControl() &&
+    firstNameControl() &&
     adressControle() &&
-    codePostalControle() &&
-    townControle() &&
+    postalCodeControl() &&
+    townControl() &&
     emailControle()
   ) {
-    // mettre le formulaireValues dans le localStorage
-    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+    // mettre le formValues dans le localStorage
+    localStorage.setItem("formValues", JSON.stringify(formValues));
   } else {
-    alert("Veuillez remplir le formulaire");
   }
   // -----------------------------------------------------
 
   // mettre les values du formulaire et les produits selectionnes dans un objet a envoyer au serveur
   const aEnvoyer = {
     cartStorage,
-    formulaireValues,
+    formValues,
   };
 });
+// ---------------enregistrer les valeurs du formulaire------
+const recoveryLocalStorage = localStorage.getItem("formValues");
+const recoveryLocalStorageObjet = JSON.parse(recoveryLocalStorage);
+
+document.querySelector("#name").value = recoveryLocalStorageObjet.nom;
+document.querySelector("#firstname").value = recoveryLocalStorageObjet.prenom;
+document.querySelector("#adress").value = recoveryLocalStorageObjet.adresse;
+document.querySelector("#codepostal").value =
+  recoveryLocalStorageObjet.codePostal;
+document.querySelector("#town").value = recoveryLocalStorageObjet.ville;
+document.querySelector("#email").value = recoveryLocalStorageObjet.mail;
