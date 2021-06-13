@@ -24,9 +24,6 @@ Promise.all(promises).then((data) => {
       <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <div class="descriptionCart">
         <h3>${teddy.name}</h3>
-        <label class="selectProduct" for="quantiteProduit"> Choisir la quantité </label>
-        <select name="option-produit" id="productQuantity">
-        </select>
         <p id="price">${teddy.price / 100}.00 € </p>
       </div>
     </div>
@@ -34,18 +31,6 @@ Promise.all(promises).then((data) => {
     displayCart.innerHTML = productCart;
   });
 });
-// --------selection quantite -----------
-const structureQuantite = `
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">13</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="7">7</option>
-  <option value="8">8</option>
-  <option value="9">9</option>
-`;
 
 // -----------------formulaire---------------
 
@@ -75,7 +60,7 @@ const displayFormHtml = () => {
     <input type="text" name="mail" id="email" />
 
   </form>
-  <p id="button-confirm">Valider votre panier</p>
+  <p id="button-confirm"><a href="order.html">Valider votre panier</a></p>
   `;
   // injection html
   positionForm.innerHTML = structureForm;
@@ -156,19 +141,7 @@ btnSentForm.addEventListener("click", () => {
       return true;
     } else {
       document.querySelector("#codePostalManquant").textContent =
-        "Veuillez bien remplir ce champ";
-      return false;
-    }
-  }
-  // controle de la validité de l'email
-  function emailControle() {
-    const email = formValues.mail;
-    if (regExEmail(email)) {
-      document.querySelector("#emailManquant").textContent = "";
-      return true;
-    } else {
-      document.querySelector("#emailManquant").textContent =
-        "Veuillez bien remplir ce champ";
+        "Ce champ doit uniquement contenir un nombre à 5 chiffres";
       return false;
     }
   }
@@ -184,6 +157,19 @@ btnSentForm.addEventListener("click", () => {
       return false;
     }
   }
+  // controle de la validité de l'email
+  function emailControle() {
+    const email = formValues.mail;
+    if (regExEmail(email)) {
+      document.querySelector("#emailManquant").textContent = "";
+      return true;
+    } else {
+      document.querySelector("#emailManquant").textContent =
+        "Ce champ doit être au format d'une adresse mail valide";
+      return false;
+    }
+  }
+
   // controle validité formulaire avant envoie dans le localstorage
   if (
     nameControl() &&
@@ -196,15 +182,33 @@ btnSentForm.addEventListener("click", () => {
     // mettre le formValues dans le localStorage
     localStorage.setItem("formValues", JSON.stringify(formValues));
   } else {
+    alert("formulaire non valide");
   }
-  // -----------------------------------------------------
-
-  // mettre les values du formulaire et les produits selectionnes dans un objet a envoyer au serveur
   const aEnvoyer = {
     cartStorage,
     formValues,
   };
+  // -------------------envoi vers le serveur---------
+
+  fetch("http://localhost:3000/api/teddies/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      contact: {
+        firstName: document.querySelector("#firstname").value,
+        lastName: document.querySelector("#name").value,
+        address: document.querySelector("#adress").value,
+        city: document.querySelector("#town").value,
+        email: document.querySelector("#email").value,
+      },
+      products: cartStorage,
+    }),
+  });
+  // -------------------------------------------------------------
 });
+
 // ---------------enregistrer les valeurs du formulaire------
 const recoveryLocalStorage = localStorage.getItem("formValues");
 const recoveryLocalStorageObjet = JSON.parse(recoveryLocalStorage);
