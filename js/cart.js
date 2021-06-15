@@ -5,7 +5,6 @@ if (cartStorage == null) {
 } else {
   cartStorage = JSON.parse(cartStorage);
 }
-
 // selection de l'id où je vais injecter le code html
 const displayCart = document.querySelector("#myCart");
 var productCart = "";
@@ -60,7 +59,7 @@ const displayFormHtml = () => {
     <input type="text" name="mail" id="email" />
 
   </form>
-  <p id="button-confirm"><a href="order.html">Valider votre panier</a></p>
+  <p id="button-confirm">Valider votre panier</p>
   `;
   // injection html
   positionForm.innerHTML = structureForm;
@@ -195,6 +194,7 @@ btnSentForm.addEventListener("click", () => {
     headers: {
       "Content-Type": "application/json",
     },
+
     body: JSON.stringify({
       contact: {
         firstName: document.querySelector("#firstname").value,
@@ -205,11 +205,19 @@ btnSentForm.addEventListener("click", () => {
       },
       products: cartStorage,
     }),
-  });
+  })
+    .then((data) => {
+      data.json().then((order) => {
+        localStorage.setItem("orderId", order.orderId);
+      });
+    })
+
+    .catch((err) => console.log(err));
   // -------------------------------------------------------------
+  // fermeture de mon btnSentForm.addEventListener("click"
 });
 
-// ---------------enregistrer les valeurs du formulaire------
+// // ---------------enregistrer les valeurs du formulaire------
 const recoveryLocalStorage = localStorage.getItem("formValues");
 const recoveryLocalStorageObjet = JSON.parse(recoveryLocalStorage);
 
