@@ -1,4 +1,5 @@
 // declaration de la variable
+
 let cartStorage = localStorage.getItem("teddy");
 if (cartStorage == null) {
   cartStorage = [];
@@ -24,12 +25,36 @@ Promise.all(promises).then((data) => {
       <div class="descriptionCart">
         <h3>${teddy.name}</h3>
         <p id="price">${teddy.price / 100}.00 € </p>
+        <div id="deleteTeddy"><i class="icon-delete fas fa-trash-alt">Supprimer article</i></div>
       </div>
     </div>
+    
     `;
     displayCart.innerHTML = productCart;
+
+    // -------------bouton supprimer article --------------------
+
+    const btnDeleteTeddy = document.querySelector("#deleteTeddy");
+
+    btnDeleteTeddy.addEventListener("click", () => {
+      localStorage.removeItem("teddy");
+      window.location.href = "cart.html";
+    });
+
+    // ---------------------------------------------------
   });
 });
+
+//  ------------vider entierement localstorage---------
+
+const btnDeleteCart = document.querySelector("#emptyCart");
+
+btnDeleteCart.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.href = "cart.html";
+});
+
+// ----------------------------------------------------
 
 // -----------------formulaire---------------
 
@@ -59,7 +84,7 @@ const displayFormHtml = () => {
     <input type="text" name="mail" id="email" />
 
   </form>
-  <p id="button-confirm">Valider votre panier</p>
+  <p id="button-confirm"><a href="order.html">Valider votre panier</a></p>
   `;
   // injection html
   positionForm.innerHTML = structureForm;
@@ -81,7 +106,7 @@ btnSentForm.addEventListener("click", () => {
     mail: document.querySelector("#email").value,
   };
 
-  //------------------ validation du formulaire---------
+  //------------------ verification du formulaire---------
 
   const regExNomPrenomVille = (value) => {
     return /^[A-Za-z\s]{3,20}$/.test(value);

@@ -118,6 +118,18 @@ section h2 {
 .descriptionCart p {
   font-size: 0.7em;
 }
+#deleteTeddy {
+  width: 10em;
+  border: 1px solid black;
+  border-radius: 25px;
+  font-size: 0.5em;
+}
+#emptyCart {
+  background: linear-gradient(pink, rgb(247, 200, 247));
+  border: 1px solid pink;
+  border-radius: 25px;
+  font-size: 0.5em;
+}
 /*------formulaire----*/
 .contact-information {
   background: linear-gradient(pink, rgb(247, 200, 247));
@@ -164,21 +176,16 @@ input {
 }
 .confirmation p {
   color: black;
-  font-size: 0.7em;
-}
-
-.return-home {
-  padding: 1em;
-  margin: 2em;
   font-size: 0.4em;
-  font-family: "Original Surfer", sans-serif;
-  text-align: center;
-  color: white;
-  border-radius: 25px;
-  border: 1px solid rgb(247, 200, 247);
-  background: purple;
 }
-
+#returnAccueil {
+  margin-left: 30%;
+  background: linear-gradient(pink, rgb(247, 200, 247));
+  border: 1px solid pink;
+  border-radius: 25px;
+  padding: 1em;
+  font-size: 1em;
+}
 /*footer*/
 
 footer {
