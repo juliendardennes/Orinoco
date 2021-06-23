@@ -10,7 +10,6 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
       // assigné ce teddy a la variable global
       _teddy = teddy;
       displayTeddy(teddy);
-
       //-------------------
       // -----localstorage------
       //----------------------
@@ -53,7 +52,7 @@ function displayTeddy(teddy) {
           </option>
         </select>
     </form>
-    <p>${teddy.price / 100},00€</p>
+    <p id="teddyPrice">${teddy.price / 100}.00 € </p>
     <button id="validationCart" type="button"><a href="cart.html">Ajouter au panier</a></button>
     `;
 }

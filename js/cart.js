@@ -1,6 +1,5 @@
-// declaration de la variable
+var cartStorage = localStorage.getItem("teddy");
 
-let cartStorage = localStorage.getItem("teddy");
 if (cartStorage == null) {
   cartStorage = [];
 } else {
@@ -24,33 +23,45 @@ Promise.all(promises).then((data) => {
       <img alt="teddy ${teddy.name}" src="${teddy.imageUrl}">
       <div class="descriptionCart">
         <h3>${teddy.name}</h3>
-        <p id="price">${teddy.price / 100}.00 € </p>
-        <div id="deleteTeddy"><i class="icon-delete fas fa-trash-alt">Supprimer article</i></div>
+        <p id="teddyPrice">${teddy.price / 100}.00 €</p>
+        <div id="${teddy._id}" class="deleteTeddy">
+          <i class="icon-delete fas fa-trash-alt" data-id="${teddy._id}">
+            Supprimer article
+          </i>
+        </div>
       </div>
     </div>
-    
     `;
     displayCart.innerHTML = productCart;
 
-    // -------------bouton supprimer article --------------------
+    // ------------- supprimer l'article de son choix --------------------
 
-    const btnDeleteTeddy = document.querySelector("#deleteTeddy");
+    var btnDeleteTeddy = document.getElementsByClassName("deleteTeddy");
+    for (let btn of btnDeleteTeddy) {
+      btn.addEventListener("click", (event) => {
+        if (cartStorage.includes(event.target.dataset.id)) {
+          id = cartStorage.indexOf(event.target.dataset.id);
+          cartStorage.splice(id, 1);
+          localStorage.setItem(`teddy`, JSON.stringify(cartStorage));
+        }
+        window.location.href = "cart.html";
+      });
+    }
 
-    btnDeleteTeddy.addEventListener("click", () => {
-      localStorage.removeItem("teddy");
-      window.location.href = "cart.html";
-    });
-
-    // ---------------------------------------------------
+    // --------------------------------------------------------
   });
 });
 
-//  ------------vider entierement localstorage---------
+// -----------------afficher prix total --------------------------
+
+// -----------------------------------------------------------
+
+//  ------------vider entierement les produits du localstorage---------
 
 const btnDeleteCart = document.querySelector("#emptyCart");
 
 btnDeleteCart.addEventListener("click", () => {
-  localStorage.clear();
+  localStorage.removeItem("teddy");
   window.location.href = "cart.html";
 });
 

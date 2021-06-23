@@ -98,7 +98,6 @@ section h2 {
   font-size: 1.2em;
   text-decoration: underline;
 }
-
 .thumbnail-cart {
   border: 1px solid black;
   border-radius: 20px;
@@ -113,12 +112,16 @@ section h2 {
 }
 .descriptionCart h3 {
   font-size: 1em;
-  margin: 1em;
 }
-.descriptionCart p {
+#teddyQuantity {
   font-size: 0.7em;
 }
-#deleteTeddy {
+#teddyPrice {
+  text-align: center;
+  font-size: 1em;
+}
+.deleteTeddy {
+  text-align: center;
   width: 10em;
   border: 1px solid black;
   border-radius: 25px;
@@ -136,9 +139,6 @@ section h2 {
   border-radius: 25px;
 }
 .selectProduct {
-  font-size: 0.5em;
-}
-#productQuantity {
   font-size: 0.5em;
 }
 form {
