@@ -14,12 +14,12 @@ function addConfirmOrder() {
 //-----------------------------------------
 
 // --------- bouton retour à l'accueil---------
-function resetPageConf() {
-  let btnCancel = document.getElementById("returnAccueil");
+function returnPageHome() {
+  let btnCancel = document.getElementById("returnHome");
   btnCancel.addEventListener("click", () => {
     localStorage.clear();
   });
 }
 //----------------------------------
 addConfirmOrder();
-resetPageConf();
+returnPageHome();

@@ -80,22 +80,22 @@ const displayFormHtml = () => {
   <p class="contact-information">Vos coordonnées</p>
   <form>
 
-    <label for="nom"> Nom: </label><span id="nomManquant" class="champ-manquant"></span>
+    <label for="nom"> Nom: </label><span id="missingName" class="missingField"></span>
     <input type="text" name="nom" id="name"/>
 
-    <label for="prenom"> Prénom: </label><span id="prenomManquant" class="champ-manquant"></span>
+    <label for="prenom"> Prénom: </label><span id="missingFirstName" class="missingField"></span>
     <input type="text" name="prenom" id="firstname"/>
 
-    <label for="adresse"> Adresse: </label><span id="adresseManquant" class="champ-manquant"></span>
+    <label for="adresse"> Adresse: </label><span id="missingAdress" class="missingField"></span>
     <input type="text" name="adresse" id="adress"/>
 
-    <label for="code-postal"> Code postal: </label><span id="codePostalManquant" class="champ-manquant"></span>
+    <label for="code-postal"> Code postal: </label><span id="missingCodePostal" class="missingField"></span>
     <input type="text" name="code-postal" id="codepostal"/>
     
-    <label for="town"> Ville: </label><span id="townManquant" class="champ-manquant"></span>
+    <label for="town"> Ville: </label><span id="missingTown" class="missingField"></span>
     <input type="text" name="ville" id="town" />
     
-    <label for="email"> Email: </label><span id="emailManquant" class="champ-manquant"></span>
+    <label for="email"> Email: </label><span id="missingEmail" class="missingField"></span>
     <input type="text" name="mail" id="email" />
 
   </form>
@@ -140,10 +140,10 @@ btnSentForm.addEventListener("click", () => {
   function nameControl() {
     const leNom = formValues.nom;
     if (regExNomPrenomVille(leNom)) {
-      document.querySelector("#nomManquant").textContent = "";
+      document.querySelector("#missingName").textContent = "";
       return true;
     } else {
-      document.querySelector("#nomManquant").textContent =
+      document.querySelector("#missingName").textContent =
         "Veuillez bien remplir ce champ";
       return false;
     }
@@ -152,10 +152,10 @@ btnSentForm.addEventListener("click", () => {
   function firstNameControl() {
     const lePrenom = formValues.prenom;
     if (regExNomPrenomVille(lePrenom)) {
-      document.querySelector("#prenomManquant").textContent = "";
+      document.querySelector("#missingFirstName").textContent = "";
       return true;
     } else {
-      document.querySelector("#prenomManquant").textContent =
+      document.querySelector("#missingFirstName").textContent =
         "Veuillez bien remplir ce champ";
       return false;
     }
@@ -164,10 +164,10 @@ btnSentForm.addEventListener("click", () => {
   function townControl() {
     const laVille = formValues.ville;
     if (regExNomPrenomVille(laVille)) {
-      document.querySelector("#townManquant").textContent = "";
+      document.querySelector("#missingTown").textContent = "";
       return true;
     } else {
-      document.querySelector("#townManquant").textContent =
+      document.querySelector("#missingTown").textContent =
         "Veuillez bien remplir ce champ";
       return false;
     }
@@ -176,10 +176,10 @@ btnSentForm.addEventListener("click", () => {
   function postalCodeControl() {
     const leCodePostal = formValues.codePostal;
     if (regExCodePostal(leCodePostal)) {
-      document.querySelector("#codePostalManquant").textContent = "";
+      document.querySelector("#missingCodePostal").textContent = "";
       return true;
     } else {
-      document.querySelector("#codePostalManquant").textContent =
+      document.querySelector("#missingCodePostal").textContent =
         "Ce champ doit uniquement contenir un nombre à 5 chiffres";
       return false;
     }
@@ -188,10 +188,10 @@ btnSentForm.addEventListener("click", () => {
   function adressControle() {
     const adress = formValues.adress;
     if (regExAdress(adress)) {
-      document.querySelector("#adresseManquant").textContent = "";
+      document.querySelector("#missingAdress").textContent = "";
       return true;
     } else {
-      document.querySelector("#adresseManquant").textContent =
+      document.querySelector("#missingAdress").textContent =
         "Veuillez bien remplir ce champ";
       return false;
     }
@@ -200,10 +200,10 @@ btnSentForm.addEventListener("click", () => {
   function emailControle() {
     const email = formValues.mail;
     if (regExEmail(email)) {
-      document.querySelector("#emailManquant").textContent = "";
+      document.querySelector("#missingEmail").textContent = "";
       return true;
     } else {
-      document.querySelector("#emailManquant").textContent =
+      document.querySelector("#missingEmail").textContent =
         "Ce champ doit être au format d'une adresse mail valide";
       return false;
     }
