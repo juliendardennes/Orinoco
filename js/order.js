@@ -1,3 +1,9 @@
+var cartStorage = localStorage.getItem("teddy");
+
+// ---------affichage nom et prenom du client ------
+
+// -------------------------------------------------
+
 // -------affichage référence commande-------------
 function addConfirmOrder() {
   const confirmId = localStorage.getItem("orderId");
@@ -7,26 +13,13 @@ function addConfirmOrder() {
 }
 //-----------------------------------------
 
-// -------affichage prix total de la commande--------
-
-function addConfirmPrice() {
-  const confirmPrice = localStorage.getItem("price");
-  const priceConfirm = document.getElementById("total__order");
-
-  priceConfirm.textContent = confirmPrice;
-}
-
-// --------------------------------------------------
-
 // --------- bouton retour à l'accueil---------
 function resetPageConf() {
   let btnCancel = document.getElementById("returnAccueil");
   btnCancel.addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = "index.html";
   });
 }
 //----------------------------------
-addConfirmPrice();
 addConfirmOrder();
 resetPageConf();

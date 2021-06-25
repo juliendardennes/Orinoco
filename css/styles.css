@@ -113,6 +113,10 @@ section h2 {
 .descriptionCart h3 {
   font-size: 1em;
 }
+.totalTeddy {
+  font-size: 0.8em;
+  text-decoration: underline;
+}
 #teddyQuantity {
   font-size: 0.7em;
 }
@@ -178,6 +182,9 @@ input {
   color: black;
   font-size: 0.4em;
 }
+#orderId {
+  font-size: 0.7em;
+}
 #returnAccueil {
   margin-left: 30%;
   background: linear-gradient(pink, rgb(247, 200, 247));
@@ -219,6 +226,7 @@ footer {
     margin: 1%;
   }
   .teddy-home img {
+    margin: 5%;
     width: 90%;
   }
   #thumbnails-teddies {
@@ -228,6 +236,30 @@ footer {
     font-size: 1em;
   }
   #teddy-product img {
-    width: 60%;
+    width: 30%;
+  }
+  #teddy-product h3 {
+    font-size: 2.2em;
+  }
+  .description p {
+    font-size: 1.4em;
+    font-weight: lighter;
+  }
+  label {
+    font-size: 1.5em;
+    text-decoration: underline;
+  }
+  #teddyPrice {
+    font-size: 2em;
+  }
+  #validationCart {
+    font-size: 1.5em;
+    margin-left: 40%;
+  }
+  #teddyPrice {
+    font-size: 1.2em;
+  }
+  #returnAccueil {
+    margin-left: 45%;
   }
 }

@@ -1,4 +1,5 @@
 var cartStorage = localStorage.getItem("teddy");
+let totalPrice = 0;
 
 if (cartStorage == null) {
   cartStorage = [];
@@ -34,6 +35,10 @@ Promise.all(promises).then((data) => {
     `;
     displayCart.innerHTML = productCart;
 
+    // -----------------afficher prix total --------------------------
+    totalPrice += teddy.price;
+    // -----------------------------------------------------------
+
     // ------------- supprimer l'article de son choix --------------------
 
     var btnDeleteTeddy = document.getElementsByClassName("deleteTeddy");
@@ -50,11 +55,10 @@ Promise.all(promises).then((data) => {
 
     // --------------------------------------------------------
   });
+  // ---------ajoute le prix total à payer -----------------------
+  document.getElementById("totalPrice").innerHTML = totalPrice / 100 + " .00 €";
+  // ---------------------------------------------------------------
 });
-
-// -----------------afficher prix total --------------------------
-
-// -----------------------------------------------------------
 
 //  ------------vider entierement les produits du localstorage---------
 
@@ -67,7 +71,7 @@ btnDeleteCart.addEventListener("click", () => {
 
 // ----------------------------------------------------
 
-// -----------------formulaire---------------
+// ------------------------formulaire-----------------------------
 
 const displayFormHtml = () => {
   // selection du dom pour le positionnement du formulaire
@@ -95,7 +99,7 @@ const displayFormHtml = () => {
     <input type="text" name="mail" id="email" />
 
   </form>
-  <p id="button-confirm"><a href="order.html">Valider votre panier</a></p>
+  <p id="button-confirm">Valider votre panier</a></p>
   `;
   // injection html
   positionForm.innerHTML = structureForm;
@@ -216,6 +220,7 @@ btnSentForm.addEventListener("click", () => {
   ) {
     // mettre le formValues dans le localStorage
     localStorage.setItem("formValues", JSON.stringify(formValues));
+    window.location.href = "order.html";
   } else {
     alert("formulaire non valide");
   }
@@ -247,7 +252,6 @@ btnSentForm.addEventListener("click", () => {
         localStorage.setItem("orderId", order.orderId);
       });
     })
-
     .catch((err) => console.log(err));
   // -------------------------------------------------------------
   // fermeture de mon btnSentForm.addEventListener("click"
