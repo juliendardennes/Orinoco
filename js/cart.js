@@ -250,7 +250,6 @@ btnSentForm.addEventListener("click", () => {
       localStorage.setItem("orderId", order.orderId);
     });
   });
-  // .catch((err) => console.log(err));
   // -------------------------------------------------------------
   // fermeture de mon btnSentForm.addEventListener("click"
 });
