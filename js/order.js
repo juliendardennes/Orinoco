@@ -1,9 +1,5 @@
 var cartStorage = localStorage.getItem("teddy");
 
-// ---------affichage nom et prenom du client ------
-
-// -------------------------------------------------
-
 // -------affichage référence commande-------------
 function addConfirmOrder() {
   const confirmId = localStorage.getItem("orderId");

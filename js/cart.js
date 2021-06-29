@@ -37,6 +37,8 @@ Promise.all(promises).then((data) => {
 
     // -----------------afficher prix total --------------------------
     totalPrice += teddy.price;
+    document.getElementById("totalPrice").innerHTML =
+      totalPrice / 100 + " .00 €";
     // -----------------------------------------------------------
 
     // ------------- supprimer l'article de son choix --------------------
@@ -55,9 +57,6 @@ Promise.all(promises).then((data) => {
 
     // --------------------------------------------------------
   });
-  // ---------ajoute le prix total à payer -----------------------
-  document.getElementById("totalPrice").innerHTML = totalPrice / 100 + " .00 €";
-  // ---------------------------------------------------------------
 });
 
 //  ------------vider entierement les produits du localstorage---------
@@ -246,13 +245,12 @@ btnSentForm.addEventListener("click", () => {
       },
       products: cartStorage,
     }),
-  })
-    .then((data) => {
-      data.json().then((order) => {
-        localStorage.setItem("orderId", order.orderId);
-      });
-    })
-    .catch((err) => console.log(err));
+  }).then((data) => {
+    data.json().then((order) => {
+      localStorage.setItem("orderId", order.orderId);
+    });
+  });
+  // .catch((err) => console.log(err));
   // -------------------------------------------------------------
   // fermeture de mon btnSentForm.addEventListener("click"
 });
