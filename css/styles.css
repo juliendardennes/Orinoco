@@ -125,6 +125,7 @@ section h2 {
   font-size: 1em;
 }
 .deleteTeddy {
+  cursor: pointer;
   text-align: center;
   width: 10em;
   border: 1px solid black;
@@ -132,6 +133,7 @@ section h2 {
   font-size: 0.5em;
 }
 #emptyCart {
+  cursor: pointer;
   background: linear-gradient(pink, rgb(247, 200, 247));
   border: 1px solid pink;
   border-radius: 25px;
@@ -161,6 +163,7 @@ input {
   color: red;
 }
 #button-confirm {
+  cursor: pointer;
   margin-left: 20%;
   text-decoration: underline;
   width: 50%;

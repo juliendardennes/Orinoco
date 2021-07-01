@@ -53,6 +53,8 @@ function displayTeddy(teddy) {
         </select>
     </form>
     <p id="teddyPrice">${teddy.price / 100}.00 € </p>
-    <button id="validationCart" type="button"><a href="cart.html">Ajouter au panier</a></button>
+    <button id="validationCart" type="button">
+      <a href="cart.html">Ajouter au panier</a>
+    </button>
     `;
 }
