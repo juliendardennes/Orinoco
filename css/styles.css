@@ -36,6 +36,10 @@ section {
 }
 
 /*-------------oursons page d'accueil---------*/
+section h1 {
+  font-size: 1.2em;
+  font-weight: lighter;
+}
 .teddy-home {
   margin: 5%;
   border-radius: 25px;
@@ -180,15 +184,15 @@ input {
   background: linear-gradient(pink, rgb(247, 200, 247));
 }
 .confirmation h2 {
-  font-size: 0.5em;
+  font-size: 0.7em;
   color: black;
 }
 .confirmation p {
   color: black;
-  font-size: 0.4em;
+  font-size: 0.6em;
 }
 #orderId {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 #returnHome {
   margin-left: 30%;
