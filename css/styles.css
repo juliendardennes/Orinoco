@@ -161,11 +161,6 @@ form {
 input {
   margin: 0.5em;
 }
-.missingField {
-  font-weight: 900;
-  font-size: 0.7em;
-  color: red;
-}
 #button-confirm {
   cursor: pointer;
   margin-left: 20%;

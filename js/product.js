@@ -26,6 +26,9 @@ fetch(`http://localhost:3000/api/teddies/${teddyId}`) //rappel notre API + l'ID 
         }
       }
     });
+  })
+  .catch((error) => {
+    alert("la connexion au serveur n'a pas pu être effectué");
   });
 
 //boucle pour récupérer les couleurs de chaque objet

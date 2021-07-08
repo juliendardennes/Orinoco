@@ -17,9 +17,13 @@ if (cartStorage == null) {
 }
 
 const promises = cartStorage.map((id) => {
-  return fetch("http://localhost:3000/api/teddies/" + id).then((response) => {
-    return response.json();
-  });
+  return fetch("http://localhost:3000/api/teddies/" + id)
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      alert("la connexion au serveur n'a pas pu être effectué");
+    });
 });
 Promise.all(promises).then((data) => {
   data.forEach((teddy) => {
